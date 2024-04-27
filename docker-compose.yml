@@ -1,0 +1,16 @@
+version: "3"
+services:
+  asm_db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_DATABASE}
+    ports:
+      - "5432:5432"
+    volumes:
+      - asm_db:/var/lib/postgresql/data
+volumes:
+  asm_db:
+    driver: local
